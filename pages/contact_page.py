@@ -42,6 +42,13 @@ class ContactPage(BasePage):
         self.fill_address(user.address)
         self.fill_description(user.description)
 
-        element = self.visibility(self.SAVE_BTN)
-        element.click()
+        self.click(self.SAVE_BTN)
+
+    def wait_until_contact_add_form_closed(self):
+        self.wait_until_form_closed(self.SAVE_BTN)
+        return self
+
+
+
+
 

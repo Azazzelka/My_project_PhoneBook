@@ -29,3 +29,7 @@ class BasePage:
 
     def alert_accept(self):
         self.driver.switch_to.alert.accept()
+
+    def wait_until_form_closed(self, locator:Locator):
+        self.wait.until(EC.invisibility_of_element_located(locator))
+        return self
