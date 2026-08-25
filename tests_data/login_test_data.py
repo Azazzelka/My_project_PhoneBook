@@ -26,6 +26,10 @@ def create_valid_password(length=8):
 
     return "".join(password_characters)
 
+VALID_LOGIN_DATA_1 = LoginData(
+    "ksadfa@gmail.com",
+    "Qwerty@13223")
+
 VALID_LOGIN_DATA = [
     LoginData("ksadfa@gmail.com",
          "Qwerty@13223",),
