@@ -8,7 +8,7 @@ class BasePage:
     def __init__(self, driver: WebDriver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 5)
-    URL = "https://telranedu.web.app/home"
+
 
     def find(self, locator: Locator):
         return self.wait.until(EC.presence_of_element_located(locator))
