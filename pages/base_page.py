@@ -13,8 +13,9 @@ class BasePage:
     def find(self, locator: Locator):
         return self.wait.until(EC.presence_of_element_located(locator))
 
-    def visibility(self, locator: Locator):
-        return self.wait.until(EC.visibility_of_element_located(locator))
+    def visibility(self, locator: Locator, timeout: int | None = None):
+        wait = (self.wait if timeout is None else WebDriverWait(self.driver, timeout))
+        return wait.until(EC.visibility_of_element_located(locator))
 
     def click(self, locator: Locator):
         self.wait.until(EC.element_to_be_clickable(locator)).click()

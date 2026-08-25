@@ -42,4 +42,4 @@ def test_login_valid_not_registered_data(driver,data):
 
     assert login_page.get_alert_text() == "Wrong email or password"
     login_page.alert_accept()
-    assert not login_page.is_logged()
+    assert not login_page.is_logged(1)

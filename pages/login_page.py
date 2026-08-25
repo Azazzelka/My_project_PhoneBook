@@ -25,9 +25,9 @@ class LoginPage(BasePage):
     def submit_registration(self):
         self.click(self.REGISTRATION_BTN)
 
-    def is_logged(self) -> bool:
+    def is_logged(self, timeout: int = 3) -> bool:
         try:
-            self.visibility(self.SIGN_OUT_BTN)
+            self.visibility(self.SIGN_OUT_BTN, timeout= timeout)
             return True
         except TimeoutException:
             return False
