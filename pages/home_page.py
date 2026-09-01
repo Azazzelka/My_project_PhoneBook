@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
-from pages.contact_page import ContactPage
+from pages.add_contact_page import ContactPage
 from pages.login_page import LoginPage
 
 
@@ -21,3 +21,4 @@ class HomePage(BasePage):
     def open_add_contact_form(self):
         self.click(self.ADD_NAV_LINK)
         return ContactPage(self.driver)
+

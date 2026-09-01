@@ -71,3 +71,23 @@ INVALID_CONTACT_DATA_WITH_EMPTY_FIELD = [
 
 ]
 
+EMAIL_INVALID_DATA_ADD_CONTACT = [
+    create_contact(email="testexample.com"),
+    create_contact(email="test@@example.com"),
+    create_contact(email="test@example@com"),
+    create_contact(email="@example.com"),
+    create_contact(email="test@"),
+    create_contact(email="@"),
+    create_contact(email="test @example.com"),
+    create_contact(email="test@ example.com"),
+    create_contact(email="test user@example.com"),
+    create_contact(email="test@example .com"),
+    create_contact(email=" test@example.com"),
+    create_contact(email="test@example.com "),
+    create_contact(email="тест@example.com"),
+    create_contact(email="test@пример.com"),
+    create_contact(email="example.com@שלום"),
+    create_contact(email="test@דוגמה.com"),
+    create_contact(email="existing@example.com"),
+]
+

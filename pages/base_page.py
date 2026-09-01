@@ -25,6 +25,7 @@ class BasePage:
         element.clear()
         element.send_keys(text)
 
+
     def get_alert_text(self):
         return self.wait.until(EC.alert_is_present()).text
 

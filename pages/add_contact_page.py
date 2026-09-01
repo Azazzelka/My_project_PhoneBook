@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 from models.contact import Contact
 from pages.base_page import BasePage
+from pages.contacts_page import ContactsPage
 
 
 class ContactPage(BasePage):
@@ -13,8 +14,13 @@ class ContactPage(BasePage):
     ADDRESS_INPUT = (By.CSS_SELECTOR, "input[placeholder='Address']")
     DESCRIPTION_INPUT = (By.CSS_SELECTOR, "input[placeholder='description']")
     SAVE_BTN = (By.XPATH, "//button[b[text()='Save']]")
+    CONTACTS_PAGE_LINK = (By.XPATH, '//a[@href="/contacts"]')
 
 
+
+    def open_contacts_page(self) -> "ContactsPage":
+        self.click(self.CONTACTS_PAGE_LINK)
+        return ContactsPage(self.driver)
 
     def fill_name(self, name):
         self.input_field(self.NAME_INPUT, name)
@@ -43,6 +49,7 @@ class ContactPage(BasePage):
         self.fill_description(user.description)
 
         self.click(self.SAVE_BTN)
+        #self.wait_until_contact_add_form_closed()
 
     def wait_until_contact_add_form_closed(self):
         self.wait_until_form_closed(self.SAVE_BTN)

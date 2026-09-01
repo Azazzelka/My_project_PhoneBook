@@ -4,7 +4,8 @@ import pytest
 from selenium.common import TimeoutException
 
 from pages.home_page import HomePage
-from tests_data.contact_test_data import VALID_CONTACT_DATA, INVALID_CONTACT_DATA_WITH_EMPTY_FIELD
+from tests_data.contact_test_data import VALID_CONTACT_DATA, INVALID_CONTACT_DATA_WITH_EMPTY_FIELD, \
+    EMAIL_INVALID_DATA_ADD_CONTACT
 
 
 @pytest.mark.parametrize("contact", VALID_CONTACT_DATA)
@@ -39,3 +40,12 @@ def test_add_contact_with_empty_field(authenticated_driver, contact, expected_be
 
     elif expected_behavior == "Form_closed":
         assert  add_contact_page.wait_until_contact_add_form_closed()
+
+@pytest.mark.parametrize("data", EMAIL_INVALID_DATA_ADD_CONTACT)
+def test_add_contact_with_invalid_field_email(authenticated_driver, data):
+    add_contact_page = HomePage(authenticated_driver).open_add_contact_form()
+    add_contact_page.fill_add_contact_form(data)
+
+    assert "Email not valid" in add_contact_page.get_alert_text()
+
+    add_contact_page.alert_accept()
